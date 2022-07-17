@@ -41,20 +41,19 @@ if (isset($_POST['edit'])) {
     $Password = $_POST['Password'];
     $ConfirmPassword = $_POST['ConfirmPassword'];
 
+ $query=mysqli_query($conn, "UPDATE form SET emp_code='$emp_code', first_name='$firstname', last_name='$lastname', dob='$dob', gender='$gender', mobile_no='$mobile_no', email='$email', city='$city', pin='$pin', emp_dept='$empDepartment', username='$username', password='$Password', confirm_password='$ConfirmPassword' WHERE emp_code='$emp_code'");
 
-     $query = "UPDATE form SET emp_code='$empcode',first_name='$firstname',last_name='$lastname',dob='$dob',gender='$gender',mobile_no='$mobile_no',email='$email',city='$city',pin='$pin','emp_dept'='$empDepartment',username='$username',password='$Password',confirm_password='$ConfirmPassword' WHERE emp_code='$empcode'";
- 
-    
-    $data = mysqli_query($conn, $query);
-   
-    if ($data) {
+    if ($query) {
         echo "<script> alert('Record Updated sucessfully')</script>";
-        ?>    <meta http-equiv="refresh" content="1; url=./display.php"> <?php
-    } else {
-        echo "<script> alert('Failed to update Record')</script>";
-    }
-}
 ?>
+        <meta http-equiv="refresh" content="1; url=./display.php"> <?php
+        } 
+                                                                
+    else {
+     echo "<script> alert('Failed to update Record')</script>";
+        }
+      }
+       ?>
 
 
 
